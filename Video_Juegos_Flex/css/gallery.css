@@ -24,7 +24,7 @@
   }
 
   & > .characters-list > li > img {
-    transition: transform .3s, filter .3s;
+    transition: transform 0.3s, filter 0.3s;
     filter: brightness(90%);
   }
 
@@ -42,7 +42,7 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-  
+
     & > .characters-list > li {
       width: 100%;
       height: auto;

@@ -1,12 +1,14 @@
 @font-face {
-  font-family: 'Exo-Regular';
-  src: url('../fonts/Exo-Regular.ttf');
-  }
+  font-family: "Exo-Regular";
+  src: url("../fonts/Exo-Regular.ttf");
+}
 
 :root {
   --primary-color: hsl(240, 42%, 41%);
   --primary-dark: hsl(233, 45%, 8%);
-  --font: 'Exo-Regular', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+  --font: "Exo-Regular", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   --white: hsl(0, 0%, 100%);
   --gray-dark: hsl(0, 0%, 50%);
 
@@ -18,6 +20,12 @@
   --bottom-bg-gradiente-color: hsl(246, 35%, 44%);
 
   --root-size: 18px;
+}
+
+@media only screen and (max-width: 764px) {
+  :root {
+    --root-size: 14px;
+  }
 }
 
 html {
@@ -44,8 +52,12 @@ img {
 }
 
 body {
-  background: rgb(11,13,29);
-  background: linear-gradient(180deg, rgba(11,13,29,1) 0%, rgba(81,73,151,1) 100%);
+  background: rgb(11, 13, 29);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 13, 29, 1) 0%,
+    rgba(81, 73, 151, 1) 100%
+  );
   min-height: 100%;
 }
 
@@ -53,7 +65,8 @@ a {
   text-decoration: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -83,16 +96,16 @@ input[type="text"] {
   background: var(--primary-color);
   border: 1px solid var(--gray-dark);
   border-radius: var(--radius-md);
-  padding: .65rem;
+  padding: 0.65rem;
 }
 
 .input-solid {
-  padding: .60rem .80rem;
+  padding: 0.6rem 0.8rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--gray-dark);
   outline: 2px solid transparent;
   color: var(--white);
-  transition: border .3s, box-shadow .3s;
+  transition: border 0.3s, box-shadow 0.3s;
 
   &:focus {
     border-color: var(--primary-color);
@@ -104,7 +117,7 @@ input[type="text"] {
 /* Header Component */
 
 .header-wrapper {
-  padding-block: .5rem;
+  padding-block: 0.5rem;
   border-bottom: 1px solid var(--white);
   display: flex;
   justify-content: space-between;
@@ -133,7 +146,7 @@ input[type="text"] {
   & li a {
     color: var(--white);
     font-size: 1.1rem;
-    transition: color .3s;
+    transition: color 0.3s;
 
     &:hover {
       color: var(--primary-color);
@@ -147,12 +160,12 @@ input[type="text"] {
 }
 
 #searcher .form-group input[type="text"] {
-  padding: .60rem .80rem;
+  padding: 0.6rem 0.8rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--gray-dark);
   outline: 2px solid transparent;
   color: var(--white);
-  transition: border .3s, box-shadow .3s;
+  transition: border 0.3s, box-shadow 0.3s;
 
   &:focus {
     border-color: var(--primary-color);
@@ -164,7 +177,7 @@ input[type="text"] {
 .searcher-button {
   background: transparent;
   background-color: var(--primary-color);
-  padding: .60rem .70rem;
+  padding: 0.6rem 0.7rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--gray-dark);
   cursor: pointer;
@@ -206,7 +219,8 @@ main > h2 {
   font-size: 1.3rem;
 }
 
-.news, .login {
+.news,
+.login {
   width: 20%;
   display: flex;
   flex-direction: column;
@@ -222,7 +236,7 @@ main > h2 {
     list-style-type: disc;
     color: var(--white);
     margin-left: 1.4rem;
-    margin-top: .6rem;
+    margin-top: 0.6rem;
   }
 
   & ul > li {
@@ -250,7 +264,7 @@ main > h2 {
 
 #login-form .form-group label {
   color: var(--white);
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 #login-form .form-group input {
@@ -278,7 +292,7 @@ main > h2 {
 }
 
 .social-media-links-list {
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   display: flex;
   flex-direction: row;
   gap: 6px;
@@ -288,15 +302,16 @@ main > h2 {
   .main {
     margin-top: 14px;
     display: flex;
-    gap: 12px;
+    gap: 32px;
     flex-direction: column;
   }
 
   main {
     width: 100% !important;
   }
-  
-  .news, .login {
+
+  .news,
+  .login {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -321,7 +336,7 @@ footer > ol {
 }
 
 footer > ol > li {
-  margin-top: .7rem;
+  margin-top: 0.7rem;
 }
 
 footer > ol > li a {
@@ -340,4 +355,3 @@ footer > ol > li a {
     padding-block: 2.6rem;
   }
 }
-
