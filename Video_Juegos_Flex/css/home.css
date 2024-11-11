@@ -1,0 +1,39 @@
+/* News */
+
+.article-news > article {
+  margin-top: 16px;
+}
+
+.game-new {
+  margin-top: 16px;
+  color: var(--white);
+
+  & .game-new-date {
+    font-size: .85rem;
+    margin-top: 12px;
+    margin-bottom: 10px;
+  }
+
+  & .game-new-info {
+    font-size: .95rem;
+  }
+
+  & .game-new-info a {
+    color: yellowgreen;
+  }
+
+  & .game-new-info a:hover {
+    color: yellowgreen;
+    text-decoration: underline;
+  }
+
+  & .game-new-img {
+    border: 1px solid var(--white);
+    line-height: 0;
+  }
+
+  & .game-new-title {
+    margin-block: 12px 18px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 1</title>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+        }
+
+        form {
+            margin-top: 1.5rem;
+
+            & .form-container {
+                margin-top: 0.5rem;
+            }
+        }
+
+        .form-radio {
+            margin: 0.65rem 0;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <div class="form-container">
+                <h1>Encuesta: mejor película, actor y director</h1>
+                <div class="form-group">
+                    <h2>Mejor Película</h2>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="movie" checked>
+                            El Padrino
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="movie">
+                            Crepúsculo
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="movie">
+                            Los Odiosos 8
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="movie">
+                            Anatomía de un Asesinato
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h2>Mejor Actor</h2>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="actor" checked>
+                            Gary Oldman
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="actor">
+                            Denzel Washington
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="actor">
+                            Daniel Day-Lewis
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="actor">
+                            James Stewart
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h2>Mejor Director</h2>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="director" checked>
+                            Guillermo del Toro
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="director">
+                            Christopher Nolan
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="director">
+                            Paul Thomas Anderson
+                        </label>
+                    </div>
+                    <div class="form-radio">
+                        <label>
+                            <input type="radio" name="director">
+                            Greta Gerwig
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
