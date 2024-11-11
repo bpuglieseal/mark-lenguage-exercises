@@ -1,0 +1,43 @@
+/* Releases */
+
+.releases {
+  margin-top: 8px;
+}
+
+.releases-list > h3 {
+  text-align: center;
+  color: var(--white);
+}
+
+.releases-list {
+  margin-top: 16px;
+}
+
+.most-wanted-list {
+  margin-top: 28px;
+}
+
+.most-wanted-list-item {
+  text-align: center;
+  color: var(--white);
+  margin-top: 16px;
+  font-size: 1rem;
+
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  .most-wanted-list-item {
+    font-size: 0.9rem;
+
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      font-size: 0.9rem;
+    }
+  }
+}

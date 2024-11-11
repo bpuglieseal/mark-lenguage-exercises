@@ -1,0 +1,47 @@
+/* Shop Form */
+
+.shop-form {
+  margin: 0 auto;
+  margin-top: 26px;
+  padding: 12px;
+  border: 1px solid var(--white);
+  width: 55%;
+  color: var(--white);
+}
+
+.shop-form form > .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 16px;
+  gap: 4px;
+
+  & label {
+    font-weight: 400;
+  }
+}
+
+.shop-form form > button {
+  margin-top: 12px;
+}
+
+#shop-form-button {
+  width: 100%;
+  line-height: 0;
+  padding-block: 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  .shop-form {
+    width: 100%;
+  }
+}

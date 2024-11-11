@@ -1,0 +1,25 @@
+/* Trailers */
+
+.trailer {
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 18px;
+
+  & > h4 {
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  & > iframe {
+    width: 100%;
+    height: 315px;
+    margin-top: 12px;
+    border: 1px solid var(--white);
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  .trailer {
+    width: 100%;
+  }
+}
