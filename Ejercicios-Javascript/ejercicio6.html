@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 6</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const root = document.getElementById("app");
+      const title = document.createElement("h1");
+      const number = prompt("Digite un número entre 0 y 9999");
+      title.innerText = `${number} tiene ${number.length} digito(s)`;
+
+      root.append(title);
+    </script>
+  </body>
+</html>

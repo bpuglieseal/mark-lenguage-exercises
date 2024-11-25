@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 8</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const root = document.getElementById("app");
+      const number = 3;
+      const table = document.createElement("ul");
+
+      for (let i = 1, j = 3; i <= 50; ) {
+        if (j % 3 == 0) {
+          table.innerHTML += `<li>[${i}] ${j}</li>`;
+          i++;
+        }
+        j++;
+      }
+
+      root.append(table);
+    </script>
+  </body>
+</html>

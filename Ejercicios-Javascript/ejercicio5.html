@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 5</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const root = document.getElementById("app");
+      const title = document.createElement("h1");
+      const first = parseInt(prompt("Digite el primer número: "));
+      const second = parseInt(prompt("Digite el segundo número: "));
+      const third = parseInt(prompt("Digite el tercer número: "));
+      
+      if (first > second && first > third) title.innerText = `${first} es mayor que ${second} y ${third}`;
+      if (second > first && second > third) title.innerText = `${second} es mayor que ${first} y ${third}`;
+      if (third > first && third > second) title.innerText = `${third} es mayor que ${first} y ${second}`;
+
+      root.append(title);
+    </script>
+  </body>
+</html>
