@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 15</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const root = document.getElementById('app');
+      const title = document.createElement('h1');
+      const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+      const day = prompt('Digite el dia de la semana: ').toLocaleLowerCase();
+      const numberOf = days.indexOf(day);
+
+      if (numberOf !== -1) {
+        title.innerText = `El día ${day} es el número ${numberOf + 1} de la semana.`;
+      } else {
+        title.innerText ='El día ingresado no es válido. Debe ser un día de la semana (lunes, martes, ...).';
+      }
+
+      root.append(title);
+    </script>
+  </body>
+</html>

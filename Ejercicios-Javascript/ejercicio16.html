@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 16</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const root = document.getElementById('app');
+      const title = document.createElement('h1');
+      const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+      const month = prompt('Digite el mes: ').toLocaleLowerCase();
+      const numberOf = months.indexOf(month);
+
+      if (numberOf !== -1) {
+        title.innerText = `El mes ${month} es el número ${numberOf + 1} del año.`;
+      } else {
+        title.innerText ='El día ingresado no es válido. Debe ser un mes del año (enero, febrero, marzo, ...).';
+      }
+
+      root.append(title);
+    </script>
+  </body>
+</html>
