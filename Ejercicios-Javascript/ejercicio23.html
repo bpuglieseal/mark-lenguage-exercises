@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 13</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      function writeDate(day, month, year, root) {
+        const title = document.createElement("h1");
+        const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        title.innerText = `${day} de ${months[month - 1]} de ${year}`;
+        root.append(title);
+      }
+
+      const root = document.getElementById("app");
+      const day = parseInt(prompt("Digite el dia del mes: "));
+      const month = parseInt(prompt("Digite el numero del mes: "));
+      const year = parseInt(prompt("Digite el año: "));
+
+      writeDate(day, month, year, root);
+    </script>
+  </body>
+</html>
