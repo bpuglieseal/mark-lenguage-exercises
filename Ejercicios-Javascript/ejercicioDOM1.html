@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 1</title>
+
+    <style>
+      td {
+        border: 2px solid black;
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td id="field"></td>
+          <td id="calc"></td>
+        </tr>
+        <tr>
+          <td>
+            <button id="s1">Ver 1</button>
+            <button id="s2">Ver 2</button>
+            <button id="s3">Ver 3</button>
+          </td>
+          <td>
+            <button id="x2">Por 2</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const field = document.getElementById("field");
+      const calc = document.getElementById("calc");
+
+      document.getElementById("s1").addEventListener("click", () => {
+        field.innerText = "1";
+      });
+
+      document.getElementById("s2").addEventListener("click", () => {
+        field.innerText = "2";
+      });
+
+      document.getElementById("s3").addEventListener("click", () => {
+        field.innerText = "3";
+      });
+
+      document.getElementById("x2").addEventListener("click", () => {
+        const parsedNumber = parseInt(field.innerText);
+
+        if (isNaN(parsedNumber)) {
+          alert("Seleccione un numero antes de multiplicar");
+          return;
+        }
+
+        calc.innerText = parsedNumber * 2;
+      });
+    </script>
+  </body>
+</html>

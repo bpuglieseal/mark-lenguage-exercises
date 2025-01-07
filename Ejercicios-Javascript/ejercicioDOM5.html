@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 5</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <input type="number" id="field" />
+        <button id="button">Repetir</button>
+      </div>
+      <ul id="list"></ul>
+    </div>
+    <script>
+      function isValidInput(input) {
+        const value = parseInt(input.value);
+        console.log(value);
+        if (isNaN(value) || value === "") {
+          return false;
+        }
+        return true;
+      }
+
+      const field = document.getElementById("field");
+      const button = document.getElementById("button");
+      const list = document.getElementById("list");
+
+      button.addEventListener("click", () => {
+        if (!isValidInput(field)) {
+            alert("Introduce un número válido")
+            return
+        }
+        
+        const value = parseInt(field.value);
+        let items = "";
+        for (let i = 0; i <= value; i++) {
+            items += `<li>Contador: ${i}</li>`;
+        }
+        list.innerHTML = items;
+      });
+    </script>
+  </body>
+</html>

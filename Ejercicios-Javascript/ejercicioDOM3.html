@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 1</title>
+
+    <style>
+      td {
+        border: 2px solid black;
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Numero 1
+                </th>
+                <th>
+                    Numero 2
+                </th>
+                <th>
+                    Resultado
+                </th>
+            </tr>
+        </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" placeholder="1" id="field-1"></td>
+          <td><input type="text" placeholder="2" id="field-2"></td>
+          <td id="response"></td>
+        </tr>
+        <tr>
+          <td>
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+            <button id="divide">/</button>
+            <button id="multiply">*</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+        function isValidInput(input) {
+            const value = parseInt(input.value);
+            console.log(value);
+            if (isNaN(value) || value === "") {
+                return false;
+            }
+            return true;
+        }
+
+      const field1 = document.getElementById("field-1");
+      const field2 = document.getElementById("field-2");
+
+      document.getElementById("plus").addEventListener("click", () => {
+        if (!isValidInput(field1) && !isValidInput(field2)) {
+            alert("Los valores introducidos no son válidos")
+            return
+        }
+
+        const value1 = parseInt(field1.value);
+        const value2 = parseInt(field2.value);
+
+        document.getElementById("response").innerHTML = value1 + value2;
+      });
+
+      document.getElementById("minus").addEventListener("click", () => {
+        if (!isValidInput(field1) && !isValidInput(field2)) {
+            alert("Los valores introducidos no son válidos")
+            return
+        }
+
+        const value1 = parseInt(field1.value);
+        const value2 = parseInt(field2.value);
+
+        document.getElementById("response").innerHTML = value1 - value2;
+      });
+
+      document.getElementById("divide").addEventListener("click", () => {
+        if (!isValidInput(field1) && !isValidInput(field2)) {
+            alert("Los valores introducidos no son válidos")
+            return
+        }
+
+        const value1 = parseInt(field1.value);
+        const value2 = parseInt(field2.value);
+
+        document.getElementById("response").innerHTML = value1 / value2;
+      });
+
+      document.getElementById("multiply").addEventListener("click", () => {
+        if (!isValidInput(field1) && !isValidInput(field2)) {
+            alert("Los valores introducidos no son válidos")
+            return
+        }
+
+        const value1 = parseInt(field1.value);
+        const value2 = parseInt(field2.value);
+
+        document.getElementById("response").innerHTML = value1 * value2;
+      });
+      
+    </script>
+  </body>
+</html>
+
