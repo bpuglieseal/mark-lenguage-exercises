@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 7</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Que quieres que muestre la página?</h1>
+      <hr>
+      <button id="2x2">Una tabla de 2 filas * 2 columnas</button>
+      <hr>
+      <button id="saludar">Un mensaje de saludo</button>
+      <hr>
+      <button id="3x3">Una tabla de 3 filas * 3 columnas</button>
+      <hr>
+      <div id="tables">
+      </div>
+    </div>
+    <script>
+      document.getElementById("saludar").addEventListener("click", () => {
+        alert("Hola, Mundo!")
+      });
+
+      document.getElementById("2x2").addEventListener("click", () => {
+        document.getElementById("tables").innerHTML = `
+            <table>
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+            </table>
+        `
+      });
+
+      document.getElementById("3x3").addEventListener("click", () => {
+        document.getElementById("tables").innerHTML = `
+            <table>
+            <thead>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+            </table>
+        `
+      });
+    </script>
+  </body>
+</html>

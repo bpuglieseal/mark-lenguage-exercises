@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 6</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>El juego de advinar un numero</h1>
+      <p>Cual crees que es el numero secreto? Escribelo</p>
+      <form id="game-form">
+        <input type="text" name="number" id="number" />
+        <button>Compruebe si has acertado</button>
+      </form>
+      <button id="reset">Reiniciar Juego</button>
+      <h2 id="attemps">Numero de intentos:</h2>
+    </div>
+    <script>
+      function isValidInput(input) {
+        const value = parseInt(input.value);
+        if (isNaN(value) || value === "") {
+          return false;
+        }
+        return true;
+      }
+
+      function generateRandomNumber(mix, max) {
+        return Math.floor(Math.random() * (max - mix + 1)) + mix;
+      }
+
+      function disabledForm() {
+        const form = document.getElementById("game-form");
+        const elements = form.elements;
+        for (const element of elements) {
+          element.disabled = true;
+        }
+      }
+
+      function activeForm() {
+        const form = document.getElementById("game-form");
+        const elements = form.elements;
+        for (const element of elements) {
+          element.disabled = false;
+        }
+      }
+
+      const gameForm = document.getElementById("game-form");
+      const resetButton = document.getElementById("reset");
+      let randomNumber;
+      let attemps = 5;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        randomNumber = generateRandomNumber(1, 1000);
+        console.log(randomNumber);
+        const attempsTittle = document.getElementById("attemps");
+        attempsTittle.innerText = `Numero de intentos: ${attemps}`;
+        const reset = document.getElementById("reset");
+
+        reset.addEventListener("click", () => {
+          attemps = 5;
+          attempsTittle.innerText = `Numero de intentos: ${attemps}`;
+          activeForm();
+          randomNumber = generateRandomNumber(1, 1000);
+          console.log(randomNumber);
+          alert("Juego reiniciado!");
+        })
+
+        gameForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = e.target.number;
+
+          if (!isValidInput(input)) {
+            alert("El valor ingresado debe ser un número entero");
+            return;
+          }
+
+          const parsedInput = parseInt(input.value);
+
+          if (parsedInput == randomNumber) {
+            alert("Felicidades. Acertaste el número!");
+            disabledForm();
+          } else {
+            attemps -= 1;
+            attempsTittle.innerText = `Numero de intentos: ${attemps}`;
+
+            if (parsedInput > randomNumber && attemps > 0) {
+              alert("Fallaste. Pista: El número es menor")
+            } else if (attemps > 0) {
+              alert("Fallaste. Pista: El número es mayor")
+            }
+          }
+
+          if (attemps == 0) {
+            alert("Perdiste! Intentalo de nuevo");
+            disabledForm();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
