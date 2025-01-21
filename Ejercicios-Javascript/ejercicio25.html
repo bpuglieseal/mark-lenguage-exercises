@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 25</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      function isOverweight(weight, height) {
+        return (weight / Math.pow(height, 2)) >= 25;
+      }
+
+      const root = document.getElementById("app");
+      const weight = document.createElement("h2");
+      const height = document.createElement("h2");
+      const title = document.createElement("h1");
+
+      const inputWeight = parseInt(prompt("Digite tu peso: "));
+      const inputHeight = parseFloat(prompt("Digite tu altura: "));
+      weight.innerText = `Peso: ${inputWeight}`;
+      height.innerText = `Altura: ${inputHeight}`;
+
+      if (isOverweight(inputWeight, inputHeight)) {
+        title.innerText = "Tiene sobrepeso";
+      } else {
+        title.innerText = "No tiene sobrepeso";
+      }
+
+      root.appendChild(weight);
+      root.appendChild(height);
+      root.append(title);
+    </script>
+  </body>
+</html>

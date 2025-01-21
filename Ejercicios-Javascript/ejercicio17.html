@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ejercicio 17</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      function isEven(number) {
+        return number % 2 == 0;
+      }
+
+      function showFirst20evenNumbers() {
+        const root = document.getElementById('app');
+        const list = document.createElement("ul");
+
+        for (let i = 2, j = 0; j < 20; i++) {
+          if (isEven(i)) {
+            list.innerHTML += `<li>${i}</li>`;
+            j++;
+          }
+        }
+
+        root.appendChild(list);
+      }
+  
+      showFirst20evenNumbers();
+    </script>
+  </body>
+</html>
