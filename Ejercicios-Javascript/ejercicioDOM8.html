@@ -3,21 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EjercicioDOM 7</title>
+    <title>EjercicioDOM 8</title>
   </head>
   <body>
-    <form>
+    <div id="app">
+      <form id="table-form">
         <div class="form-group">
-            <label for="rows">Numeros de filas</label>
-            <input type="text" id="rows">
+          <label for="rows">Numeros de filas</label>
+          <input type="number" id="rows" />
         </div>
         <div class="form-group">
-            <label for="columns">Numeros de filas</label>
-            <input type="text" id="columns">
+          <label for="columns">Numeros de columnas</label>
+          <input type="number" id="columns" name="columns"/>
         </div>
-    </form>
+        <button type="submit">Crear tabla</button>
+      </form>
+      <div id="table-result"></div>
+    </div>
+
     <script>
-      
+      function isValidInput(input) {
+        const value = parseInt(input.value);
+        if (isNaN(value) || value === "") {
+          return false;
+        }
+        return true;
+      }
+
+      document.getElementById("table-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const tableResult = document.getElementById("table-result");
+        const rows = e.target.rows;
+        const columns = e.target.columns;
+
+        if (!isValidInput(rows)) {
+          alert("Las filas deben ser un número válido")
+          return;
+        }
+
+        if (!isValidInput(columns)) {
+          alert("Las columnas deben ser un número válido")
+          return;
+        }
+
+        const table = document.createElement("table");
+        const tbody = document.createElement("tbody");
+        let c = 1;
+        let trs = "";
+        
+        for (let i = 0; i < parseInt(rows.value); i++) {
+          trs += "<tr>";
+          for (let j = 0; j < parseInt(columns.value); j++) {
+            trs += `<td>${c}</td>`;
+            c++;
+          }
+          trs += "</tr>";
+        }
+
+        tbody.innerHTML = trs;
+        table.appendChild(tbody);
+        tableResult.innerHTML = "";
+        tableResult.appendChild(table);
+      });
     </script>
   </body>
 </html>
