@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galería Dinámica</title>
+    <style>
+      /* Estilos básicos para la galería */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        text-align: center;
+        max-width: 800px;
+        margin: 20px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      .inputs {
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      input {
+        width: 50px;
+        padding: 5px;
+        margin-right: 10px;
+        font-size: 16px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      /* Estilos de la galería */
+      .galeria {
+        display: grid;
+        gap: 15px;
+      }
+
+      .imagen img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Galería Dinámica</h1>
+
+      <div class="inputs">
+        <label for="filas">Filas:</label>
+        <input type="number" id="filas" min="1" value="2" />
+        <label for="columnas">Columnas:</label>
+        <input type="number" id="columnas" min="1" value="3" />
+        <button id="update">
+          Actualizar Cuadrícula
+        </button>
+      </div>
+
+      <div id="galeria" class="galeria"></div>
+    </div>
+
+    <script>
+          // Función para actualizar la galería según las filas y columnas ingresadas
+      function actualizarGaleria() {
+        const filas = parseInt(document.getElementById('filas').value);
+        const columnas = parseInt(document.getElementById('columnas').value);
+
+        // Establecer las dimensiones de la cuadrícula
+        const galeria = document.getElementById('galeria');
+        galeria.innerHTML = ''; // Limpiar la galería antes de agregar nuevas imágenes
+        galeria.style.gridTemplateColumns = `repeat(${columnas}, 1fr)`;
+
+        // Crear imágenes de forma dinámica
+        const totalImagenes = filas * columnas;
+        for (let i = 0; i < totalImagenes; i++) {
+          const divImagen = document.createElement('div');
+          divImagen.classList.add('imagen');
+          divImagen.innerHTML = `<img src="./images/imagen${i+1}.jpg" alt="Imagen ${i + 1}">`;
+          galeria.appendChild(divImagen);
+        }
+      }
+
+      document.getElementById("update").addEventListener("click", () => actualizarGaleria());
+
+      // Llamar a la función para inicializar la galería
+      actualizarGaleria();
+    </script>
+  </body>
+</html>

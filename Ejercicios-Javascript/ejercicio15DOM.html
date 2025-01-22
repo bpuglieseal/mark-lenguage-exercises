@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 15 DOM</title>
+    <style>
+      .gallery {
+        width: 65%;
+        margin: 0 auto;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: .65rem;
+        margin-top: 1rem;
+      }
+
+      .gallery-photo {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="gallery">
+        <div class="main-photo">
+          <img
+            src="images/hassaan-here-ckyTKYVGlXk-unsplash.jpg"
+            alt="main.jpg"
+          />
+        </div>
+        <div class="photos">
+          <img class="gallery-photo" src="images/imagen1.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/imagen2.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/imagen3.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/imagen4.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/imagen5.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/imagen6.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/hassaan-here-ckyTKYVGlXk-unsplash.jpg" alt="imagen.jpg" />
+          <img class="gallery-photo" src="images/imagen6.jpg" alt="imagen.jpg" />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const photos = document.querySelectorAll(".gallery-photo");
+    const mainPhoto = document.querySelector(".main-photo img");
+
+    photos.forEach((photo) => {
+      photo.addEventListener("click", (e) => {
+        mainPhoto.src = e.target.src;
+      })
+    })
+  </script>
+</html>
