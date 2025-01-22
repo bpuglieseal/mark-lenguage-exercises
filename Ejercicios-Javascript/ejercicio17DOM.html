@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 17</title>
+    <style>
+      .image {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="box">
+        <h1>Tres Productos</h1>
+        <div id="list">
+          <select name="product1" id="product1">
+            <option value="1" selected>Ordenador</option>
+            <option value="2">Tablet</option>
+            <option value="3">Videojuego</option>
+          </select>
+          <div>
+            <img
+              class="image"
+              id="image1"
+              src="images/ordenador.png"
+              alt="ordenador.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <h1>Tres Productos</h1>
+        <div id="list">
+          <select name="product2" id="product2">
+            <option value="1" selected>Ordenador</option>
+            <option value="2">Tablet</option>
+            <option value="3">Videojuego</option>
+          </select>
+          <div>
+            <img
+              class="image"
+              id="image2"
+              src="images/ordenador.png"
+              alt="ordenador.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <h1>Tres Productos</h1>
+        <div id="list">
+          <select name="product" id="product3">
+            <option value="1" selected>Ordenador</option>
+            <option value="2">Tablet</option>
+            <option value="3">Videojuego</option>
+          </select>
+          <div>
+            <img
+              class="image"
+              id="image3"
+              src="images/ordenador.png"
+              alt="ordenador.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const select1 = document.getElementById("product1");
+      const image1 = document.getElementById("image1");
+
+      const select2 = document.getElementById("product2");
+      const image2 = document.getElementById("image2");
+
+      const select3 = document.getElementById("product3");
+      const image3 = document.getElementById("image3");
+
+      select1.addEventListener("change", (e) => {
+        switch (e.target.value) {
+          case "1":
+            image1.src = "images/ordenador.png";
+            break;
+          case "2":
+            image1.src = "images/tablet.png";
+            break;
+          case "3":
+            image1.src = "images/playstation.png";
+            break;
+
+          default:
+            break;
+        }
+      });
+
+      select2.addEventListener("change", (e) => {
+        switch (e.target.value) {
+          case "1":
+            image2.src = "images/ordenador.png";
+            break;
+          case "2":
+            image2.src = "images/tablet.png";
+            break;
+          case "3":
+            image2.src = "images/playstation.png";
+            break;
+
+          default:
+            break;
+        }
+      });
+
+      select3.addEventListener("change", (e) => {
+        switch (e.target.value) {
+          case "1":
+            image3.src = "images/ordenador.png";
+            break;
+          case "2":
+            image3.src = "images/tablet.png";
+            break;
+          case "3":
+            image3.src = "images/playstation.png";
+            break;
+
+          default:
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

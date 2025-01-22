@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 18</title>
+    <style>
+      .gallery {
+        width: 800px;
+        border: 1px solid;
+        margin: 0 auto;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .subgallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 25px;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>Catalogo de productos</h1>
+        <div class="select">
+          <select name="products" id="products">
+            <option value="1">Ordenadores</option>
+            <option value="2">Tablets</option>
+            <option value="3">Videojuegos</option>
+          </select>
+        </div>
+        <div class="gallery">
+          <img class="main-image" src="images/ordenador.png" />
+          <div class="subgallery">
+            <img src="images/ordenador.png" alt="" /><img
+              src="images/ordenador.png"
+              alt=""
+            /><img src="images/ordenador.png" alt="" /><img
+              src="images/ordenador.png"
+              alt=""
+            /><img src="images/ordenador.png" alt="" /><img
+              src="images/ordenador.png"
+              alt=""
+            /><img src="images/ordenador.png" alt="" /><img
+              src="images/ordenador.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const select1 = document.getElementById("products");
+      const images = document.querySelectorAll("img");
+
+      select1.addEventListener("change", (e) => {
+        switch (e.target.value) {
+          case "1":
+            images.forEach((value) => {
+              value.src = "images/ordenador.png";
+            });
+            break;
+          case "2":
+            images.forEach((value) => {
+              value.src = "images/tablet.png";
+            });
+            break;
+          case "3":
+            images.forEach((value) => {
+              value.src = "images/playstation.png";
+            });
+            break;
+
+          default:
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

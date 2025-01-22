@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EjercicioDOM 16</title>
+    <style>
+      .image {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Tres Productos</h1>
+      <div id="list">
+        <select name="product" id="product">
+          <option value="1" selected>Ordenador</option>
+          <option value="2">Tablet</option>
+          <option value="3">Videojuego</option>
+        </select>
+        <div>
+          <img
+            class="image"
+            id="image"
+            src="images/ordenador.png"
+            alt="ordenador.png"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      const select = document.getElementById("product");
+      const image = document.getElementById("image");
+
+      select.addEventListener("change", (e) => {
+        switch (e.target.value) {
+          case "1":
+            image.src = "images/ordenador.png";
+            break;
+          case "2":
+            image.src = "images/tablet.png";
+            break;
+          case "3":
+            image.src = "images/playstation.png";
+            break;
+
+          default:
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
