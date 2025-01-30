@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 12 DOM</title>
+</head>
+<body>
+  <div id="app">
+    <div id="bombilla">
+      <img id="off" src="images/apagado.png" alt="apagado.png">
+      <img id="on" src="images/encendido.png" alt="encendido.png">
+    </div>
+    <p>Haga click en la bombilla para encender/apagar la luz</p>
+  </div>
+
+  <script>
+    let isOn = false;
+    let on = document.getElementById("on");
+    let off = document.getElementById("off");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      on.style.display = "none";
+
+      document.getElementById("bombilla").addEventListener("click", () => {
+        if (isOn) {
+          isOn = false;
+          on.style.display = "none";
+          off.style.display = "block";
+        } else {
+          isOn = true;
+          on.style.display = "block";
+          off.style.display = "none";
+        }
+      })
+    });
+  </script>
+</body>
+</html>

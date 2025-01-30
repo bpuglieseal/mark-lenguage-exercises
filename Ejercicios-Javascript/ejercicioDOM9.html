@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 9 DOM</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Piensa en un numero que esta entre 0 y 100 y lo adivinaré</h1>
+      <h2>Es el número?</h2>
+      <p id="number">25</p>
+      <div id="action-buttons">
+        <button id="is-minus">Menor!</button>
+        <button id="is-answer">Has acertado!</button>
+        <button id="is-major">Mayor!</button>
+      </div>
+      <div id="reset-button">
+        <button id="reset">Reiniciar</button>
+      </div>
+      <div>
+        <p id="tries">Intentos: 1000</p>
+      </div>
+    </div>
+    <script>
+      let randomNumber;
+      let tries;
+
+      function generateRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function showNewNumber(number) {
+        document.getElementById('number').innerText = number;
+      }
+
+      function showTries(number) {
+        document.getElementById(
+          'tries'
+        ).innerText = `Intentos: ${tries}`;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        randomNumber = generateRandomNumber(0, 100);
+        tries = 0;
+
+        document
+          .getElementById('is-minus')
+          .addEventListener('click', () => {
+            randomNumber = generateRandomNumber(
+              0,
+              randomNumber - 1
+            );
+            tries += 1;
+
+            showNewNumber(randomNumber);
+            showTries(tries);
+          });
+
+        document
+          .getElementById('is-answer')
+          .addEventListener('click', () => {
+            alert(
+              'Numero de intentos que necesite para adivinar el numero: ' +
+                tries
+            );
+            tries = 0;
+
+            showTries(tries);
+          });
+
+        document
+          .getElementById('reset')
+          .addEventListener('click', () => {
+            alert('Vaya, no logre adivinar el numero...');
+            alert('Reiniciando juego...');
+            tries = 0;
+            randomNumber = generateRandomNumber(0, 100);
+
+            showTries(tries);
+            showNewNumber(randomNumber);
+          });
+
+        document
+          .getElementById('is-major')
+          .addEventListener('click', () => {
+            randomNumber = generateRandomNumber(
+              randomNumber + 1,
+              100
+            );
+            tries += 1;
+
+            showNewNumber(randomNumber);
+            showTries(tries);
+          });
+
+        showNewNumber(randomNumber);
+        showTries(tries);
+      });
+    </script>
+  </body>
+</html>

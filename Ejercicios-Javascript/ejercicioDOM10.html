@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 10 DOM</title>
+    <style>
+      #image {
+        width: 200px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Imagen</h1>
+      <img id="image" src="./images/hassaan-here-ckyTKYVGlXk-unsplash.jpg" alt="image.jpg">
+      <p>-------------------------</p>
+      <button id="reveal">Pulsa el boton para que la imagen aparezca</button>
+    </div>
+    <script>
+     const image = document.getElementById("image");
+     const button = document.getElementById("reveal");
+
+     button.addEventListener("click", () => {
+      image.style.display = "block";
+     })
+    </script>
+  </body>
+</html>

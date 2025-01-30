@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 11 DOM</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Imagen</h1>
+      <p id="text">------------Prueba-------------</p>
+      <button id="change">
+        Pulsa el boton para que el texto cambie a rojo
+      </button>
+    </div>
+
+    <script>
+      const text = document.getElementById('text');
+      const button = document.getElementById('change');
+
+      button.addEventListener('click', () => {
+        text.style.color = 'red';
+      });
+    </script>
+  </body>
+</html>
