@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dado A</title>
+    <style>
+      html {
+        font-family: var(--font);
+        font-size: var(--root-size);
+        min-height: 100%;
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      .juego {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      img {
+        width: 350px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="juego" class="juego">
+        <h1>El juego del dado</h1>
+        <div id="dado">
+          <img id="image" src="images/dado.jpg" alt="dado.jpg" />
+        </div>
+        <div class="actions">
+          <button id="lanzar" class="lanzar">Lanzar el dado</button>
+          <button id="reiniciar" class="reiniciar">Reset</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script defer>
+    function lanzarDado() {
+      return Math.floor(Math.random() * 6) + 1;
+    }
+
+    document.getElementById("lanzar").addEventListener("click", (e) => {
+        const numeroAleatorio = lanzarDado();
+        document.getElementById("image").src = `images/${numeroAleatorio}.PNG`;
+    });
+
+    document.getElementById("reiniciar").addEventListener("click", (e) => {
+        document.getElementById("image").src = `images/dado.jpg`;
+    })
+  </script>
+</html>
