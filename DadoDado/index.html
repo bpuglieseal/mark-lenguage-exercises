@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Lanzamiento de dado</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./css/css.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="titulo">Juego de Dados</h1>
+    </header>
+
+    <section>
+      <h2 class="juego" id="mensaje">¡Vamos a jugar!</h2>
+
+      <div class="fila_dados">
+        <div class="f_dado1">
+          <h2 class="pun1" id="pun1">0</h2>
+          <img
+            class="dado1"
+            src="images/dado.jpg"
+            width="180"
+            height="180"
+            id="dado1"
+          />
+        </div>
+        <div class="f_dado2">
+          <img
+            class="dado2"
+            src="images/dado.jpg"
+            width="180"
+            height="180"
+            id="dado2"
+          />
+          <h2 class="pun2" id="pun2">0</h2>
+        </div>
+      </div>
+
+      <div class="fila_contadores">
+        <div class="f_cont1">
+          <h3>Contador de 6:</h3>
+          <input type="text" class="suma1" value="0" disabled id="contador1" />
+        </div>
+        <div class="f_cont2">
+          <h3>Contador de 6:</h3>
+          <input type="text" class="suma2" value="0" disabled id="contador2" />
+        </div>
+      </div>
+
+      <div class="fila_lanzar">
+        <input
+          type="button"
+          class="tirar1"
+          value="LANZA JUGADOR 1"
+          id="tirar1"
+          disabled
+        />
+        <input
+          type="button"
+          class="tirar2"
+          value="LANZA JUGADOR 2"
+          id="tirar2"
+          disabled
+        />
+      </div>
+
+      <div class="inicializar">
+        <input type="button" value="INICIALIZAR" id="iniciar" />
+      </div>
+
+      <div class="mostrar">
+        <input type="button" value="MOSTRAR / OCULTAR" id="show" />
+      </div>
+    </section>
+    <script defer>
+      function generarNumero() {
+        return Math.floor(Math.random() * 6) + 1;
+      }
+
+      let dado1 = document.getElementById("dado1");
+      let dado2 = document.getElementById("dado2");
+      let pun1 = document.getElementById("pun1");
+      let pun2 = document.getElementById("pun2");
+      let show = document.getElementById("show");
+      let contador1 = document.getElementById("contador1");
+      let contador2 = document.getElementById("contador2");
+      let mensaje = document.getElementById("mensaje");
+      let mensajeActual = "";
+      let mensajeEstaOculto = false;
+      let cantidadTurnosJugador1 = 0;
+      let sale6Jugador1 = 0;
+      let cantidadTurnosJugador2 = 0;
+      let sale6Jugador2 = 0;
+      let turno = 1;
+      let actualValorJugador1 = -1;
+      let actualValorJugador2 = -1;
+
+      function iniciarJuego() {
+        turno = 1;
+        sale6Jugador1 = 0;
+        sale6Jugador2 = 0;
+        contador1.value = "0";
+        contador2.value = "0";
+        pun1.innerText = "0";
+        pun2.innerText = "0";
+        actualValorJugador1 = -1;
+        actualValorJugador2 = -1;
+        cantidadTurnosJugador1 = 0;
+        cantidadTurnosJugador2 = 0;
+
+        document.getElementById("tirar1").disabled = false;
+        document.getElementById("tirar2").disabled = true;
+      }
+
+      function terminarJuego(params) {
+        document.getElementById("tirar1").disabled = true;
+        document.getElementById("tirar2").disabled = true;
+      }
+
+      function lanzarDado() {
+        if (turno === 1) {
+          cantidadTurnosJugador1++;
+          let randomNumber = generarNumero();
+          actualValorJugador1 = randomNumber;
+
+          if (randomNumber === 6) {
+            sale6Jugador1++;
+          }
+
+          dado1.src = `./images/${randomNumber}.PNG`;
+          contador1.value = sale6Jugador1;
+          pun1.innerText = randomNumber;
+          turno = 2;
+          document.getElementById("tirar1").disabled = true;
+          document.getElementById("tirar2").disabled = false;
+        } else if (turno === 2) {
+          cantidadTurnosJugador2++;
+          let randomNumber = generarNumero();
+          actualValorJugador2 = randomNumber;
+
+          if (randomNumber === 6) {
+            sale6Jugador2++;
+          }
+
+          dado2.src = `./images/${randomNumber}.PNG`;
+          contador2.value = sale6Jugador2;
+          pun2.innerText = randomNumber;
+
+          turno = 1;
+          document.getElementById("tirar1").disabled = false;
+          document.getElementById("tirar2").disabled = true;
+        }
+
+        if (
+          cantidadTurnosJugador1 === cantidadTurnosJugador2 &&
+          cantidadTurnosJugador2 > 0 &&
+          cantidadTurnosJugador2 < 10
+        ) {
+          if (actualValorJugador1 > actualValorJugador2) {
+            mensaje.innerText = "Dado 1 MAYOR que Dado 2";
+          } else if (actualValorJugador1 < actualValorJugador2) {
+            mensaje.innerText = "Dado 1 MENOR que Dado 2";
+          } else {
+            mensaje.innerText = "Dado 1 IGUAL a Dado 2";
+          }
+        }
+
+        if (cantidadTurnosJugador2 === 10) {
+          if (actualValorJugador1 > actualValorJugador2) {
+            mensaje.innerText = "Ha ganado el jugador 1";
+          } else if (actualValorJugador1 < actualValorJugador2) {
+            mensaje.innerText = "Ha ganado el jugador 2";
+          } else {
+            mensaje.innerText = "Empate!";
+          }
+          terminarJuego();
+        }
+      }
+      
+      function ocultarMensaje() {
+        if (mensajeActual === "" && cantidadTurnosJugador2 == 0) {
+            return;
+        }
+
+        if (mensajeEstaOculto) {
+            mensaje.innerText = mensajeActual;
+            mensajeEstaOculto = false;
+        } else {
+            mensajeActual = mensaje.innerText;
+            mensaje.innerText = "Vamos a Jugar!";
+            mensajeEstaOculto = true;
+        }
+      }
+
+      document.getElementById("iniciar").addEventListener("click", iniciarJuego);
+      document.getElementById("tirar1").addEventListener("click", lanzarDado);
+      document.getElementById("tirar2").addEventListener("click", lanzarDado);
+      document.getElementById("show").addEventListener("click", ocultarMensaje);
+    </script>
+  </body>
+</html>
