@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario Productos</title>
+
+    <style>
+      html {
+        box-sizing: border-box;
+        font-family: var(--font);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      .lista-productos {
+        display: none;
+      }
+
+      .formulario {
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+
+      .formulario-productos {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid black;
+        padding: 0 8px;
+      }
+
+      .form-group {
+        border: 1px solid black;
+        padding: 10px;
+        width: 100%;
+        margin: 8px 0;
+      }
+
+      .radio {
+        display: inline-block;
+        margin-left: 12px;
+      }
+
+      .form-group {
+        display: flex;
+      }
+
+      .form-group > select,
+      .radio,
+      .checkbox,
+      input[type="text"],
+      input[type="number"] {
+        margin-left: 12px;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .lista-productos {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid black;
+      }
+
+      .lista-productos table {
+        width: 100%;
+        table-layout: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="formulario">
+        <form id="formulario-productos" class="formulario-productos">
+          <div class="form-group">
+            <label for="codigo">Codigo:</label>
+            <input type="text" name="codigo" id="codigo" />
+          </div>
+          <div class="form-group">
+            <label for="codigo">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" />
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio sin IVA:</label>
+            <input type="number" name="precio" id="precio" />
+          </div>
+          <div class="form-group">
+            <label for="iva">IVA%:</label>
+            <input type="number" name="iva" id="iva" />
+          </div>
+          <div class="form-group">
+            <p>Disponible:</p>
+            <div class="radio">
+              <label for="si">Si</label>
+              <input type="radio" name="disponible" id="si" value="si" />
+            </div>
+            <div class="radio">
+              <label for="no">No</label>
+              <input type="radio" name="disponible" id="no" value="no" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="grupo">Tipo de Producto: </label>
+            <select name="tipo" id="grupo">
+              <option value="1">Grupo 1</option>
+              <option value="2">Grupo 2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <p>Venta:</p>
+            <div class="checkbox">
+              <label for="tienda">Tienda</label>
+              <input type="checkbox" name="tienda" id="tienda" value="tienda"/>
+            </div>
+            <div class="checkbox">
+              <label for="online">Online</label>
+              <input type="checkbox" name="online" id="online" value="online"/>
+            </div>
+          </div>
+          <div class="form-group actions">
+            <button type="submit">Añadir Productos</button>
+            <button type="button" id="mostrar-tabla">
+              Listado de Productos
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="lista-productos">
+        <table id="tabla-productos" border="1">
+          <thead>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio Sin Iva</th>
+            <th>IVA%</th>
+            <th>Precio Con Iva</th>
+            <th>Disponibilidad</th>
+            <th>Tipo</th>
+            <th>Venta</th>
+            <tbody></tbody>
+          </thead>
+        </table>
+        <div class="button">
+            <button id="volver">Volver atras</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script defer>
+    let mostrarFormulario = true;
+    let mostrarTable = false;
+    const listaProductos = document.querySelector(".lista-productos");
+    const formularioContenedor = document.querySelector(".formulario");
+    const formulario = document.getElementById("formulario-productos");
+    const mostrarTablaButton = document.getElementById("mostrar-tabla");
+    const volverAtrasButton = document.getElementById("volver");
+    const productos = [
+      {
+        codigo: "123456",
+        nombre: "Baldassare",
+        precio: 128.9,
+        iva: 12,
+        disponibilidad: true,
+        tipo: 1,
+        venta: {
+            online: true,
+            tienda: false
+        },
+      },
+    ];
+
+    function crearProducto(e) {
+        e.preventDefault();
+
+        const codigo = formulario.codigo.value;
+        const nombre = formulario.nombre.value;
+        const precio = formulario.precio.value;
+        const iva = formulario.iva.value;
+        const disponibilidad = formulario.disponible.value;
+        const tipo = formulario.tipo.value;
+        const tienda = formulario.tienda.checked;
+        const online = formulario.online.checked;
+
+        productos.push({
+            codigo,
+            nombre,
+            precio,
+            iva,
+            disponibilidad,
+            tipo,
+            venta: {
+                tienda,
+                online
+            }
+        });
+    }
+
+    function mostrarTabla() {
+        formularioContenedor.style.display = "none";
+        listaProductos.style.display = "block";
+    }
+
+    function esconderTabla() {
+        formularioContenedor.style.display = "block";
+        listaProductos.style.display = "none";
+    }
+
+    formulario.addEventListener("submit", crearProducto);
+    mostrarTablaButton.addEventListener("click", mostrarTabla);
+    volverAtrasButton.addEventListener("click", esconderTabla);
+  </script>
+</html>
