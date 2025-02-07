@@ -110,16 +110,16 @@
             <p>Disponible:</p>
             <div class="radio">
               <label for="si">Si</label>
-              <input type="radio" name="disponible" id="si" value="si" />
+              <input type="radio" name="disponible" id="si" value="Si" />
             </div>
             <div class="radio">
               <label for="no">No</label>
-              <input type="radio" name="disponible" id="no" value="no" />
+              <input type="radio" name="disponible" id="no" value="No" />
             </div>
           </div>
           <div class="form-group">
             <label for="grupo">Tipo de Producto: </label>
-            <select name="tipo" id="grupo">
+            <select name="grupo" id="grupo">
               <option value="1">Grupo 1</option>
               <option value="2">Grupo 2</option>
             </select>
@@ -156,6 +156,8 @@
             <th>Venta</th>
             <tbody></tbody>
           </thead>
+          <tbody>
+          </tbody>
         </table>
         <div class="button">
             <button id="volver">Volver atras</button>
@@ -163,10 +165,11 @@
       </div>
     </div>
   </body>
-  <script defer>
+  <script>
     let mostrarFormulario = true;
     let mostrarTable = false;
     const listaProductos = document.querySelector(".lista-productos");
+    const tablaProductos = document.getElementById("tabla-productos");
     const formularioContenedor = document.querySelector(".formulario");
     const formulario = document.getElementById("formulario-productos");
     const mostrarTablaButton = document.getElementById("mostrar-tabla");
@@ -177,11 +180,11 @@
         nombre: "Baldassare",
         precio: 128.9,
         iva: 12,
-        disponibilidad: true,
-        tipo: 1,
+        disponibilidad: "Si",
+        grupo: 1,
         venta: {
             online: true,
-            tienda: false
+            tienda: true
         },
       },
     ];
@@ -193,23 +196,24 @@
         const nombre = formulario.nombre.value;
         const precio = formulario.precio.value;
         const iva = formulario.iva.value;
-        const disponibilidad = formulario.disponible.value;
-        const tipo = formulario.tipo.value;
+        const disponibilidad = formulario.disponible.value == "si" ? "Si" : "No";
+        const grupo = formulario.grupo.value;
         const tienda = formulario.tienda.checked;
         const online = formulario.online.checked;
 
         productos.push({
             codigo,
             nombre,
-            precio,
-            iva,
+            precio: parseInt(precio),
+            iva: parseInt(iva),
             disponibilidad,
-            tipo,
+            grupo: parseInt(grupo),
             venta: {
                 tienda,
                 online
             }
         });
+        renderizarTabla();
     }
 
     function mostrarTabla() {
@@ -225,5 +229,45 @@
     formulario.addEventListener("submit", crearProducto);
     mostrarTablaButton.addEventListener("click", mostrarTabla);
     volverAtrasButton.addEventListener("click", esconderTabla);
+
+    function renderizarTabla() {
+      const tableBody = tablaProductos.querySelector("tbody");
+      let records = "";
+      productos.forEach(({ codigo, disponibilidad, iva, nombre, precio, grupo, venta: { online, tienda }}) => {
+        let parsedPrecio = parseInt(precio);
+        let parsedIva = parseInt(iva);
+
+        let precioConIva = parsedPrecio + (precio * iva / 100);
+        let parsedDisponibilidad = disponibilidad ? "Si" : "No";
+        let parsedGrupo = grupo == 1 ? "Grupo 1" : "Grupo 2";
+        let parsedVenta = "";
+
+        if (tienda) {
+          parsedVenta += "Tienda";
+        }
+
+        if (online) {
+          parsedVenta += parsedVenta.length > 0 ? " - Online" : "Online";
+        }
+
+        records += `
+          <tr>
+            <td>${codigo}</td>
+            <td>${nombre}</td>
+            <td>${precio}</td>
+            <td>${iva}</td>
+            <td>${precioConIva}</td>
+            <td>${parsedDisponibilidad}</td>
+            <td>${parsedGrupo}</td>
+            <td>${parsedVenta}</td>
+          </tr>
+        `;
+      })
+
+      console.log(records);
+      tableBody.innerHTML = records;
+    }
+
+    document.addEventListener("DOMContentLoaded", renderizarTabla)
   </script>
 </html>
