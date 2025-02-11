@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Máquina Recreativa</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="principal">
+      <section id="s_primera" class="s_secundaria">
+        <h3>JUGADOR</h3>
+        <div class="c_fotogrande">
+          <img
+            src="imagenes/frutas.jpg"
+            id="imagenJugador"
+            width="100%"
+            height="100%"
+          />
+        </div>
+        <div>
+          <h3 id="texto"><label>PUNTOS JUGADOR</label></h3>
+          <input type="text" value="100" class="i_text" id="puntos" />
+        </div>
+        <div>
+          <input
+            type="button"
+            value="OCULTAR / MOSTRAR"
+            class="i_buttom"
+            id="ocultarTexto"
+          />
+        </div>
+      </section>
+
+      <section id="s_segunda" class="s_secundaria">
+        <h3>MAQUINA - AZAR</h3>
+        <div class="c_fotogrande">
+          <img
+            src="imagenes/frutas.jpg"
+            width="100%"
+            height="100%"
+            id="frutaImg"
+          />
+        </div>
+        <div>
+          <h3><label>NOMBRE</label></h3>
+          <input type="text" value="¿ ?" class="i_text_largo" id="frutaTexto" />
+        </div>
+        <div>
+          <input type="button" value="ANCHO" class="i_buttom" id="ancho" />
+          <input
+            type="button"
+            value="ESTRECHO"
+            class="i_buttom"
+            id="estrecho"
+          />
+        </div>
+      </section>
+
+      <section id="s_tercera" class="s_secundaria">
+        <div class="c_fila">
+          <div class="c_foto">
+            <img src="imagenes/1.jpg" width="100%" height="100%" />
+          </div>
+          <h4 class="c_texto">FRESA</h4>
+          <div class="c_boton">
+            <input
+              type="button"
+              id="fresaButton"
+              value="SELECCIÓN"
+              class="i_buttom"
+              onclick=""
+            />
+          </div>
+          <h4 class="c_texto">CLICKS</h4>
+          <div class="c_cantidad">
+            <input type="text" id="fresaClicks" value="0" class="i_text" />
+          </div>
+        </div>
+
+        <div class="c_fila">
+          <div class="c_foto">
+            <img src="imagenes/2.jpg" width="100%" height="100%" />
+          </div>
+          <h4 class="c_texto">LIMÓN</h4>
+          <div class="c_boton">
+            <input
+              type="button"
+              id="limonButton"
+              value="SELECCIÓN"
+              class="i_buttom"
+              onclick=""
+            />
+          </div>
+          <h4 class="c_texto">CLICKS</h4>
+          <div class="c_cantidad">
+            <input type="text" id="limonClicks" value="0" class="i_text" />
+          </div>
+        </div>
+
+        <div class="c_fila">
+          <div class="c_foto">
+            <img src="imagenes/3.jpg" width="100%" height="100%" />
+          </div>
+          <h4 class="c_texto">CEREZAS</h4>
+          <div class="c_boton">
+            <input
+              type="button"
+              id="cerezaButton"
+              value="SELECCIÓN"
+              class="i_buttom"
+              onclick=""
+            />
+          </div>
+          <h4 class="c_texto">CLICKS</h4>
+          <div class="c_cantidad">
+            <input type="text" id="cerezaClicks" value="0" class="i_text" />
+          </div>
+        </div>
+
+        <div class="c_fila">
+          <h3 class="c_texto_apuesta">
+            10 PUNTOS LA APUESTA - JUG igual MÁQU Suma - JUG distinto MÁQU Resta
+          </h3>
+        </div>
+        <div>
+          <input
+            type="button"
+            value="APOSTAR - AZAR"
+            class="i_buttom"
+            id="apostar"
+          />
+        </div>
+      </section>
+
+      <section id="s_cuarta" class="s_secundaria">
+        <h3 id="titulo">REINICIO</h3>
+        <div>
+          <input
+            type="button"
+            value="REINICIAR"
+            class="i_buttom"
+            id="reiniciar"
+          />
+        </div>
+      </section>
+    </div>
+    <!-- fin div principal -->
+  </body>
+  <script defer>
+    let frutaSeleccionada = 0;
+    let jugadorImagen;
+    let puntosActuales = 100;
+    let textoEstaEscondido = false;
+    const puntos = document.getElementById("puntos");
+    const apuestaButton = document.getElementById("apostar");
+    const ocultarTextoButton = document.getElementById("ocultarTexto");
+    const imagenJugador = document.getElementById("imagenJugador");
+    const estrechoButton = document.getElementById("estrecho");
+    const anchoButton = document.getElementById("ancho");
+    const fresaButton = document.getElementById("fresaButton");
+    const cerezaButton = document.getElementById("cerezaButton");
+    const limonButton = document.getElementById("limonButton");
+    let fresaClicks = document.getElementById("fresaClicks");
+    let cerezaClicks = document.getElementById("cerezaClicks");
+    let limonClicks = document.getElementById("limonClicks");
+    let fresaCounter = 0;
+    let cerezaCounter = 0;
+    let limonCounter = 0;
+
+    function random() {
+      return Math.floor(Math.random() * 3) + 1;
+    }
+
+    function actualizarImagenJugador() {
+      imagenJugador.src = `imagenes/${jugadorImagen}.jpg`;
+    }
+
+    function reiniciarFrutaResultado() {
+      document.getElementById("frutaImg").src = `imagenes/frutas.jpg`;
+      document.getElementById("frutaTexto").value = "¿ ?";
+    }
+
+    fresaButton.addEventListener("click", function (e) {
+      if (frutaSeleccionada !== 0) {
+        reiniciarFrutaResultado();
+      }
+
+      fresaCounter += 1;
+      fresaClicks.value = fresaCounter;
+      frutaSeleccionada = 1;
+      jugadorImagen = 1;
+      actualizarImagenJugador();
+    });
+
+    cerezaButton.addEventListener("click", function (e) {
+      if (frutaSeleccionada !== 0) {
+        reiniciarFrutaResultado();
+      }
+
+      cerezaCounter += 1;
+      cerezaClicks.value = cerezaCounter;
+      frutaSeleccionada = 3;
+      jugadorImagen = 3;
+      actualizarImagenJugador();
+    });
+
+    limonButton.addEventListener("click", function (e) {
+      if (frutaSeleccionada !== 0) {
+        reiniciarFrutaResultado();
+      }
+
+      limonCounter += 1;
+      limonClicks.value = limonCounter;
+      frutaSeleccionada = 2;
+      jugadorImagen = 2;
+      actualizarImagenJugador();
+    });
+
+    estrechoButton.addEventListener("click", function (e) {
+      document.getElementById("frutaImg").style.width = "50%";
+    });
+
+    anchoButton.addEventListener("click", function (e) {
+      document.getElementById("frutaImg").style.width = "100%";
+    });
+
+    ocultarTextoButton.addEventListener("click", function (e) {
+      if (textoEstaEscondido) {
+        document.getElementById("texto").style.opacity = "1";
+        textoEstaEscondido = false;
+      } else {
+        document.getElementById("texto").style.opacity = "0";
+        textoEstaEscondido = true;
+      }
+    });
+
+    apuestaButton.addEventListener("click", function (e) {
+      if (frutaSeleccionada === 0) {
+        alert("Selecciona una fruta antes de empezar a apostar");
+        return;
+      }
+
+      let randomNumber = random();
+      let frutaTexto;
+
+      switch (randomNumber) {
+        case 1:
+          frutaTexto = "Fresa";
+          break;
+        case 2:
+          frutaTexto = "Limon";
+          break;
+        case 3:
+          frutaTexto = "Cereza";
+          break;
+      }
+
+      document.getElementById("frutaImg").src = `imagenes/${randomNumber}.jpg`;
+      document.getElementById("frutaTexto").value = frutaTexto;
+
+      if (randomNumber === frutaSeleccionada) {
+        puntosActuales += 10;
+      } else {
+        puntosActuales -= 10;
+      }
+
+      puntos.value = puntosActuales;
+    });
+
+    document
+      .getElementById("reiniciar")
+      .addEventListener("click", function (e) {
+        window.location.reload();
+      });
+  </script>
+</html>
